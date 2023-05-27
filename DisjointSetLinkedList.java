@@ -1,23 +1,28 @@
 public class DisjointSetLinkedList implements IDisjointSetStructure {
     private final Node[] nodes;
 
-    public DisjointSetLinkedList(int size) {
+    public DisjointSetLinkedList(int size)
+    {
         nodes = new Node[size];
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
+        {
             nodes[i] = new Node(i);
         }
     }
 
-    private Node findRepresentative(Node node) {
+    private Node findRepresentative(Node node)
+    {
         Node representative = node.representative;
-        if (representative != node) {
+        if (representative != node)
+        {
             node.representative = findRepresentative(representative);
         }
         return node.representative;
     }
 
     @Override
-    public int findSet(int item) throws ItemOutOfRangeException {
+    public int findSet(int item) throws ItemOutOfRangeException
+    {
         validateItem(item);
 
         Node node = nodes[item];
@@ -34,7 +39,8 @@ public class DisjointSetLinkedList implements IDisjointSetStructure {
     }
 
     @Override
-    public void union(int item1, int item2) throws ItemOutOfRangeException {
+    public void union(int item1, int item2) throws ItemOutOfRangeException
+    {
         validateItem(item1);
         validateItem(item2);
 
@@ -46,14 +52,20 @@ public class DisjointSetLinkedList implements IDisjointSetStructure {
 
         if (representative1 == representative2)
         {
-            return; // Both items are already in the same set
+            return;
         }
 
-        if (representative1.length < representative2.length) {
+        if (representative1.length < representative2.length)
+        {
             Node temp = representative1;
 
             representative1 = representative2;
             representative2 = temp;
+
+            for (int i = 0; i < ; i++)
+            {
+                
+            }
         }
 
         representative2.representative = representative1;
